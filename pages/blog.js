@@ -1,8 +1,8 @@
 import Layout from "../components/Layout";
 import Entrada from "../components/Entrada";
+import styles from '../styles/Blog.module.css'
 
 const Blog = ({entradas}) => {
-    console.log(entradas)
 
     return (
         <Layout
@@ -10,26 +10,28 @@ const Blog = ({entradas}) => {
         >
             <main className="contenedor">
                 <h2 className="heading">Blog</h2>
-                {entradas.map( entrada => {
+                <div className={styles.blog}>
+
+                    {entradas.map( entrada => {
+                        
                     
-                   
-                    return <Entrada 
-                        key={entrada.id}
-                        entrada={entrada}
-                    />
-                }
-                )}
+                        return <Entrada 
+                            key={entrada.id}
+                            entrada={entrada}
+                        />
+                    }
+                    )}
+                </div>
             </main>    
         </Layout>
     )
 }
 
-export async function getServerSideProps() {
-
-    const consulta = await fetch('http://localhost:1337/blogs')
+export async function getStaticProps() {
+    const url = `${process.env.API_URL}/blogs?_sort=created_at:desc`
+    const consulta = await fetch(url)
     const entradas = await consulta.json()
 
-    console.log(entradas)
     return {
         props : {
             entradas
