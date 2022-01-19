@@ -18,7 +18,7 @@ const Guitarra = ({guitarra}) => {
                 <h3>{nombre}</h3>
                 <p className={styles.descripcion}>{descripcion}</p>
                 <p className={styles.precio}>${precio}</p>
-                <Link href={`tienda/${url}`}>
+                <Link href={`/tienda/${url}`}>
                     <a className={styles.enlace}>Ver Producto</a>
                 </Link>
             </div>
