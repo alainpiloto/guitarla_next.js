@@ -7,7 +7,7 @@ const NoEncontrado = () => {
     return (
         <div className={styles.contenido}>
             <h2>Pagina No Encontrada</h2>
-            <Link href={'/'}><a>Ir a Inicio</a></Link>            
+            <Link href='/'><a>Ir a Inicio</a></Link>            
         </div>
     )
 }
